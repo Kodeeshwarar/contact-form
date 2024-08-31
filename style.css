@@ -101,11 +101,6 @@ body {
     flex-direction: column;
 }
 
-.astricks::after {
-    content: "*";
-    margin-left: 0.2rem;
-}
-
 .form__checkbox-group,
 .form__radio-groups,
 .form__container {
@@ -357,4 +352,13 @@ body {
     font-size: 12px;
 }
 
+
+.visually-hidden:not(:focus):not(:active):not(:focus-within) {
+    clip-path: inset(50%);
+    height: 1px;
+    overflow: hidden;
+    position: absolute;
+    white-space: nowrap; 
+    width: 1px;
+  }
 
