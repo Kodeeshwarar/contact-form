@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon-32x32.png">
+  <link rel="stylesheet" href="style.css">
+  <title>Contact Form</title>
+  <style>
+    .attribution {
+      font-size: 11px;
+      text-align: center;
+    }
+    .attribution a {
+      color: hsl(228, 45%, 44%);
+    }
+  </style>
+</head>
+
+<body>
+  <form id="contactForm" class="form" aria-labelledby="formTitle">
+    <h1 class="visually-hidden">Contact Us</h1>
+    <div class="form__container">
+      <h1 class="form__heading" id="formTitle">Contact Us</h1>
+      <!-- Name fields -->
+      <div class="form__groups">
+        <div class="form__group">
+          <label for="firstName" class="form__label ">First Name <span>*</span></label>
+          <input type="text" name="firstName" id="firstName" autocomplete="given-name" class="form__input" aria-describedby="firstName-error">
+          <span id="firstName-error" class="error-info" role="alert">This field is required</span>
+        </div>
+        <div class="form__group">
+          <label for="lastName" class="form__label ">Last Name <span>*</span> </label>
+          <input type="text" name="lastName" id="lastName" autocomplete="family-name" class="form__input" aria-describedby="lastName-error">
+          <span id="lastName-error" class="error-info" role="alert">This field is required</span>
+        </div>
+      </div>
+
+      <!-- Email -->
+      <div class="form__group">
+        <label for="emailAddress" class="form__label ">Email Address <span>*</span></label>
+        <input type="email" name="emailAddress" id="emailAddress" class="form__input" aria-describedby="emailAddress-error">
+        <span id="emailAddress-error" class="error-info" role="alert">This field is required</span>
+      </div>
+
+      <!-- Query Type -->
+      <fieldset class="form__group">
+        <legend class="form__label ">Query Type</legend>
+        <div class="form__radio-groups">
+          <div class="form__radio-group">
+            <input type="radio" name="queryType" id="generalEnquiry" value="General Enquiry" class="form__radio">
+            <label for="generalEnquiry" class="form__label">General Enquiry <span>*</span></label>
+          </div>
+          <div class="form__radio-group">
+            <input type="radio" name="queryType" id="supportRequest" value="Support Request" class="form__radio">
+            <label for="supportRequest" class="form__label">Support Request <span>*</span></label>
+          </div>
+        </div>
+        <span class="error-info" role="alert">This field is required</span>
+      </fieldset>
+
+      <!-- Message -->
+      <div class="form__group">
+        <label for="message" class="form__label ">Message <span>*</span></label>
+        <textarea name="message" id="message" rows="10" class="form__input form__input-large" aria-describedby="message-error"></textarea>
+        <span id="message-error" class="error-info" role="alert">This field is required</span>
+      </div>
+
+      <!-- Consent -->
+      <fieldset class="form__group form__checkbox-group">
+        <legend class="form__label ">Consent</legend>
+        <div class="form__checkbox-container">
+          <input type="checkbox" name="termsCondition" id="termsCondition" class="form__checkbox">
+          <label for="termsCondition" class="form__label">I consent to being contacted by the team</label>
+        </div>
+        <span class="error-info" role="alert">Please consent to being contacted to submit the form</span>
+      </fieldset>
+
+      <!-- Submit Button -->
+      <div class="form__btn">
+        <input type="submit" value="Submit" id="submitBtn" class="btn primary-btn">
+      </div>
+    </div>
+
+    <!-- Success Toast -->
+    <div class="success-toast hide" aria-live="polite">
+      <div class="success-toast__container">
+        <h3 class="success-toast__heading-container">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="21" fill="none" viewBox="0 0 20 21">
+            <path fill="#fff" d="M14.28 7.72a.748.748 0 0 1 0 1.06l-5.25 5.25a.748.748 0 0 1-1.06 0l-2.25-2.25a.75.75 0 1 1 1.06-1.06l1.72 1.72 4.72-4.72a.75.75 0 0 1 1.06 0Zm5.47 2.78A9.75 9.75 0 1 1 10 .75a9.76 9.76 0 0 1 9.75 9.75Zm-1.5 0A8.25 8.25 0 1 0 10 18.75a8.26 8.26 0 0 0 8.25-8.25Z" />
+          </svg>
+          <span class="success-toast__heading">Message Sent!</span>
+        </h3>
+        <p class="success-toast__message">Thanks for completing the form. We'll be in touch soon!</p>
+      </div>
+    </div>
+  </form>
+
+  <script src="index.js"></script>
+</body>
+
+</html>
