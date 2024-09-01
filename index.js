@@ -9,7 +9,7 @@ const elementsList = [
   ...getElments("form__checkbox"),
 ];
 function validateInput(elementsList) {
-  let isValid = true;
+  let inputsValid  = true;
   elementsList.map((ele) => {
 
     if (ele.type === "radio" || ele.type === "checkbox") {
@@ -19,13 +19,13 @@ function validateInput(elementsList) {
       );
         groupElements.forEach((input) =>input.closest(".form__radio-groups, .form__checkbox-group").classList[checked ? "remove":"add"]("validation-error")
         );
-        isValid = isValid && checked;
+        inputsValid  = inputsValid  && checked;
             }
 
     if (ele.type === "text" || ele.tagName === "TEXTAREA") {
       const isEmpty = ele.value.trim() === ""
        ele.parentElement.classList[isEmpty ? "add":"remove"]("validation-error"); 
-        isValid = isValid && isEmpty ;
+        inputsValid  = inputsValid  && !isEmpty ;
     }
     if (ele.type === "email") {
       const errorInfo = ele.parentElement.querySelector(".error-info");
@@ -34,31 +34,30 @@ function validateInput(elementsList) {
     
       if (!emailValue) {
         errorInfo.textContent = "This field is required";
+        errorInfo.id="emailAddress-error"
       } else if (!isValidEmail) {
         errorInfo.textContent = "Please enter a valid email address";
+        errorInfo.id="emailValidationError"
       }
     
       ele.parentElement.classList.toggle("validation-error", !emailValue || !isValidEmail);
-      isValid = isValid && emailValue && isValidEmail;
+      inputsValid = inputsValid && emailValue && isValidEmail;
     }    
   });
-  return isValid; 
+  return inputsValid; 
 
 }
 
 document.getElementById("form").addEventListener("submit", function (e) {
   e.preventDefault();
-  const hasTrue = validateInput(elementsList);
-  toggleSuccessMessage(hasTrue);
+  toggleSuccessMessage(validateInput(elementsList));
 
 });
-
 function toggleSuccessMessage(show) {
-  if (show) {
-    successMsg.classList.remove("hide");
-    successMsg.classList.add("show");
-  } else {
-    successMsg.classList.add("hide");
-    successMsg.classList.remove("show");
+  if (!show) {
+    console.error('successMsg element is not defined');
+    return;
   }
+  successMsg.classList.toggle('show', show);
+  successMsg.classList.toggle('hide', !show);
 }
